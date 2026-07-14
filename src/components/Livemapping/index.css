@@ -1,0 +1,10 @@
+
+.Livemapping-container{
+    height:180px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px dashed #e5e0e0;
+    border-radius: 10px;
+}

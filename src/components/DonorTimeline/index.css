@@ -1,0 +1,61 @@
+.trackingpickup-time-line-container{
+    display: flex;
+    flex-direction: column;
+    width:100%;
+}
+
+.trackingpickup-dot-card{
+    display: flex;
+    align-items: center;
+    gap:10px;
+}
+
+.dot-card{
+    height:25px;
+    width:25px;
+    background-color:#6B7280;
+    border-radius: 50%;
+
+}
+.dot-completed{
+    background-color:#2A9D8F;
+}
+
+.dot-progress{
+    background-color: #FF9F1C;
+}
+
+.time-line-name{
+     color: #2f2f30;
+     font-size: 20px;
+     font-weight:600;
+     font-family:"Roboto";
+}
+
+.trackingpickup-line-card{
+    height:60px;
+    border-left:3px solid #6B7280;
+    margin-left: 12px;
+    padding:5px 25px;
+}
+
+.line-completed{
+    border-left:3px solid #2A9D8F;
+}
+
+.line-progress{
+    border-left: 3px solid #FF9F1C;
+}
+
+.trackingpickup-line-time{
+    font-family: "Roboto";
+    font-size:18px;
+    font-weight:500;
+    color: #6B7280;
+}
+
+.trackingpickup-line-end-card{
+    height:60px;
+    margin-left: 12px;
+    padding:5px 25px;
+}

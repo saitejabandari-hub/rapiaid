@@ -1,0 +1,101 @@
+
+
+.choosedelivery-container{
+    max-width:400px;
+    margin: 0px auto;
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    border-radius: 16px;
+    height:100vh;
+}
+
+.choosedelivery-main-card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding:30px 20px;
+    gap:15px;
+}
+
+.choosedelivery-accepted-card{
+    padding:10px;
+    border-bottom: 1px solid #6B7280;
+    width:100%;
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.choosedelivery-accepted-name{
+    font-family: "Roboto";
+    font-size:20px;
+    font-weight: 500;
+    color:#6B7280;
+}
+.choosedelivery-accepted-para{
+     font-family: "Roboto";
+    font-size:20px;
+    font-weight: 600;
+    color:#3e3f40;
+}
+
+.choosedelivery-choosetravel-card{
+    display: flex;
+    align-items: center;
+    gap:15px;
+    width:100%;
+    border: 2px solid #c9cbd0;
+    padding: 20px;
+    border-radius: 15px;
+    cursor:pointer;
+}
+.choosedelivery-choosetravel-card:hover{
+    background-color:#ddfbdc ;
+}
+
+.choosedelivery-choosetravel-card-selected{
+    background-color:#ddfbdc ;
+    border:8px solid rgba(36, 219, 82, 0.733)dc;
+}
+
+.choosedelivery-travel-path{
+    background-color: #efeaea;
+    font-size:30px;
+    border-radius:10px;
+}
+
+.travelpath-heading{
+    font-family:"Roboto";
+    font-size:22px;
+    font-weight: 600;
+    color: #3e3f40;
+}
+
+.travelpath-paragraph{
+    font-family: "Roboto";
+    font-size:18px;
+    font-weight: 500;
+    color:#6B7280;
+
+}
+.choosedeliver-text-card{
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+}
+
+.choosedelivery-button{
+    background-color:#14213D;
+    border-width:0px;
+    padding:15px 10px;
+    color: #ffffff;
+    font-family:"Roboto";
+    font-size: 20px;
+    font-weight:600;
+    border-radius:10px;
+    cursor:pointer;
+    width:100%;
+    margin-top:15px;
+}

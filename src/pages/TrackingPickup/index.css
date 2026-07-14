@@ -1,0 +1,73 @@
+.trackingpickup-container{
+    max-width:400px;
+    height:100vh;
+    margin: 0px auto;
+    border-radius: 16px;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.trackingpickup-main-container{
+    display:flex;
+    flex-direction:column;
+    align-items: center;
+    width:100%;
+    padding:10px 20px;
+    gap:10px;
+}
+
+.trackingpickup-headding-card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap:10px;
+}
+
+.trackingpickup-heading{
+    font-family: "Roboto";
+    font-size:30px;
+    font-weight:600;
+    color: #FF9F1C;
+}
+
+.trackingpickup-matched-time{
+    font-family: "Roboto";
+    font-size:18px;
+    font-weight:500;
+    color: #6B7280;
+}
+
+.trackingpickup-donor-container{
+    padding:10px;
+    width:100%;
+    border: 2px solid #6B7280;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap:15px;
+}
+
+.trackingpickup-donor-profile-card{
+    background-color: #14213D;
+    height:50px;
+    width:50px;
+    border-radius:50%;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+.trackingpickup-donor-profile-letters{
+    color: #ffffff;
+    font-size:18px;
+    font-weight: 600;
+    font-family:"Roboto";
+}
+.trackingpickup-donor-name{
+    color:#14213D;
+    font-family: "Roboto";
+    font-size: 20px;
+    font-weight: 600;
+}

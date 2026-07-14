@@ -1,0 +1,56 @@
+
+
+
+.livetracking-time-line-container{
+    display: flex;
+    flex-direction: column;
+    width:100%;
+}
+
+.livetracking-dot-card{
+    display: flex;
+    align-items: center;
+    gap:10px;
+}
+
+.dot-card{
+    height:25px;
+    width:25px;
+    background-color:#6B7280;
+    border-radius: 50%;
+
+}
+.dot-completed{
+    background-color:#2A9D8F;
+}
+
+.time-line-name{
+     color: #2f2f30;
+     font-size: 20px;
+     font-weight:600;
+     font-family:"Roboto";
+}
+
+.livetracking-line-card{
+    height:60px;
+    border-left:3px solid #6B7280;
+    margin-left: 12px;
+    padding:5px 25px;
+}
+
+.line-completed{
+    border-left:3px solid #2A9D8F;
+}
+
+.livetracking-line-time{
+    font-family: "Roboto";
+    font-size:18px;
+    font-weight:500;
+    color: #6B7280;
+}
+
+.livetracking-line-end-card{
+    height:60px;
+    margin-left: 12px;
+    padding:5px 25px;
+}

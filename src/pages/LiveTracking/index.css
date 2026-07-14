@@ -1,0 +1,74 @@
+
+.livetracking-container{
+    max-width:400px;
+    height:100vh;
+    margin: 0px auto;
+    border-radius: 16px;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.livetracking-main-container{
+    display:flex;
+    flex-direction:column;
+    align-items: center;
+    width:100%;
+    padding:10px 20px;
+    gap:20px;
+}
+
+.livetracking-headding-card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap:10px;
+}
+
+.livetracking-heading{
+    font-family: "Roboto";
+    font-size:40px;
+    font-weight:600;
+    color: #2A9D8F;
+}
+
+.livetracking-matched-time{
+    font-family: "Roboto";
+    font-size:18px;
+    font-weight:500;
+    color: #6B7280;
+}
+
+.livetracking-donor-container{
+    padding:10px;
+    width:100%;
+    border: 2px solid #6B7280;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap:15px;
+}
+
+.livetracking-donor-profile-card{
+    background-color: #14213D;
+    height:50px;
+    width:50px;
+    border-radius:50%;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+.livetracking-donor-profile-letters{
+    color: #ffffff;
+    font-size:18px;
+    font-weight: 600;
+    font-family:"Roboto";
+}
+.livetracking-donor-name{
+    color:#14213D;
+    font-family: "Roboto";
+    font-size: 20px;
+    font-weight: 600;
+}

@@ -1,0 +1,135 @@
+ 
+ .NgoRequest-container{
+    display: flex;
+    flex-direction: column;
+    border-radius: 16px;
+    max-width:400px;
+    margin: 0px auto;
+    height:100vh;
+    background-color: #ffffff;
+ }
+
+ .NgoRequest-main-container{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 15px;
+    width:100%;
+ }
+ .NgoRequest-details-card{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    width:100%;
+     border: 2px solid #beb8b8;
+     border-radius: 15px;
+     padding:10px;
+     gap:15px;
+ }
+
+ .NgoRequest-category-pickup-card{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width:100%;
+    padding-bottom:10px;
+    border-bottom: 2px solid #d5cfcf;
+ }
+
+ .NgoRequest-category{
+    background-color: #FBE4E5;
+    padding:10px;
+    border-radius: 10px;
+    color:#E63946;
+    font-family:"Roboto";
+    font-size:20px;
+    font-weight:600;
+ }
+
+ .NgoRequest-category-situation{
+    font-family: "Roboto";
+    font-weight: 600;
+    font-size: 20px;
+    color: #1d1b1b;
+
+ }
+
+ .NgoRequest-delivery-details-card{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+ }
+
+ .NgoRequest-delivery-details{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-top:10px;
+
+ }
+
+ .NgoRequest-heading{
+    font-family: "Roboto";
+    font-weight: 500;
+    font-size: 20px;
+    color: #938e8e;
+
+ }
+
+ .NgoRequest-name{
+    font-family: "Roboto";
+    font-weight: 600;
+    font-size: 20px;
+    color: #343131;
+
+ }
+
+ .NgoRequest-distance{
+    background-color: #eae8e8;
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+ }
+
+.NgoRequest-distance-heading{
+    font-family: "Roboto";
+    font-weight: 600;
+    font-size: 20px;
+    color: #474545;
+
+ }
+ .NgoRequest-second-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap:15px;
+ }
+
+ .NgoRequest-innercard{
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-top:10px;
+    border-bottom: 2px solid #e6e2e2;
+    padding-bottom: 10px;
+
+ }
+
+ .NgoRequest-button{
+
+    background-color: #14213D;
+    padding:20px 20px;
+    font-family:"Roboto";
+    font-size:20px;
+    font-weight: 600;
+    color: #ffffff;
+    border-radius: 10px;
+    cursor:pointer;
+    margin-top:10px;
+ }

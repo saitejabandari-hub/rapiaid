@@ -1,0 +1,129 @@
+
+.coordinator-Container{
+    max-width:400px;
+    margin: 0px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #ffffff;
+    height: 100vh;
+    border-radius: 16px;
+}
+
+.coordinator-Main-Container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 10px 10px;
+}
+
+.coordinator-assigned-pickup-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width:100%;
+    list-style-type:none;
+    gap:10px;
+}
+
+.coordinator-assigned-pickup-card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width:350px;
+    border: 2px solid #E3E2DD;
+    border-radius: 10px;
+    padding:10px;
+    gap:10px;
+}
+
+.coordinator-category-card{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width:100%;
+}
+
+.coordinator-category-details-card{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 10px;
+    background-color: #FBE4E5;
+    border-radius:10px;
+}
+.coordinator-category-name{
+    font-family:"Roboto";
+    font-size:18px;
+    font-weight:600;
+    color: #E63946;
+}
+
+.coordinator-estimation-time{
+    color: #000000;
+    font-family:"Roboto";
+    font-weight:500;
+    font-size:20px;
+}
+
+.coordinator-details-card{
+    display:flex;
+    flex-direction:column;
+    align-items: center;
+    width: 100%;
+    gap:10px;
+}
+.coordinator-details-section{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width:100%;
+
+}
+
+.coordinator-details-heading{
+    font-family:"Roboto";
+    font-size:20px;
+    font-weight:500;
+    color: #6B7280;
+}
+
+.coordinator-details-name{
+    font-family:"Roboto";
+    font-size:18px;
+    font-weight:600;
+    color: #000000;
+}
+
+.arrow-Icon{
+    font-size:20px;
+}
+
+.coordinator-action-card{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap:10px;
+    width:100%;
+}
+
+.updating-card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap:5px;
+}
+
+.horizontalline{
+    border: 5px solid #2A9D8F;
+    width:90px;
+    border-radius:10px;
+}
+
+.updated-name{
+    font-family:"Roboto";
+    font-size:15px;
+    font-weight:600;
+    color: #6B7280;
+}
