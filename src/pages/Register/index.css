@@ -1,0 +1,244 @@
+
+.register-container{
+    max-width:400px;
+    margin:0px auto;
+    border-radius:16px;
+    padding-bottom:15px;
+    display:flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    height:100vh;
+}
+
+.register-main-container{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    padding:10px 20px;
+    gap:10px;
+    flex:1;
+    overflow-Y:auto;
+}
+
+.register-input-container{
+    display: flex;
+    flex-direction: column;   
+    gap:10px;
+    width:100%;
+}
+
+.register-input-card{
+    display: flex;
+    flex-direction: column;
+    gap:2px;
+}
+
+.register-label{
+    font-family:"Roboto";
+    font-size:18px;
+    font-weight:600;
+    color: #5b5959;
+}
+
+.register-input{
+    padding:10px;
+    font-family:"Roboto";
+    font-size:16px;
+    font-size: 500;
+    outline:none;
+    border-radius:10px;
+    color: #6B7280;
+    border: 2px solid #bcbdc0;
+    width:320px;
+}
+
+.register-role-container{
+    display:flex;
+    flex-direction: column;
+    width:100%;
+    gap:5px;
+}
+
+.register-role-button-card{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    gap:10px;
+    
+}
+
+
+.register-role-heading{
+
+    font-family:"Roboto";
+    font-size:15px;
+    font-weight:600;
+     color: #5b5959;
+}
+
+.register-role-button{
+    padding:10px;
+    border-radius:10px;
+    border: 2px solid #5b5959;
+    font-family:"Roboto";
+    font-size:20px;
+    color: #5b5959;
+    background-color: transparent;
+    width:180px;
+    cursor:pointer;
+    transition: 0.2s ease;
+}
+
+.register-role-button:hover{
+    transform: scale(1.02);
+}
+
+.register-role-button-select{
+    background-color: #14213D;
+    color: #ffffff;
+    border: 2px solid #14213D;
+    padding:10px;
+    border-radius:10px;
+    font-family:"Roboto";
+    font-size:20px;
+    width:180px;
+}
+
+.register-donor-container{
+    background-color: #faf5f5;
+    padding:10px;
+    width:100%;
+    display: flex;
+    flex-direction: column;
+    border-radius:10px;
+    gap:10px;
+}
+
+.register-donor-heading{
+    font-family:"Roboto";
+    font-size:16px;
+    font-weight:600;
+    color:#E63946;
+
+}
+
+.register-donor-input-card{
+    display: flex;
+    flex-direction: column;
+    gap:5px;
+}
+
+.register-donor-label{
+    font-family:"Roboto";
+    font-size:16px;
+    font-weight:600;
+    color: #5b5959;
+}
+
+.register-donor-input{
+    padding:10px;
+    font-family:"Roboto";
+    font-size:16px;
+    font-size: 500;
+    outline:none;
+    border-radius:10px;
+    color: #6B7280;
+    border: 2px solid #bcbdc0;
+    width:300px;
+    background-color: transparent;
+}
+
+.register-page-category-container{
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    gap:10px;
+    flex-wrap: wrap;
+    width: 100%;
+    list-style-type:none;
+
+}
+
+.register-page-category-button{
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   gap:16px;
+   padding: 8px;
+   border: 2px solid #bcbdc0;
+   border-radius: 10px;
+   width:150px;
+   cursor:pointer;
+   transition: 0.2s ease;
+   background-color: transparent;
+
+}
+.register-page-category-button:hover{
+    transform: scale(1.02);
+
+}
+
+.register-page-category-button-selected{
+    background-color: #a2a0a0
+}
+
+.categoryIcon{
+    color: #E63946;
+    font-size: 20px;
+}
+.register-page-category-name{
+    font-family:"Roboto";
+    font-size:12px;
+    font-weight: 500;
+
+}
+
+.register-permission-card{
+    border: 2px solid #bcbdc0;
+    border-radius:10px;
+    padding:10px;
+    display: flex;
+    align-items: center;
+    gap:10px;
+
+}
+
+.register-green-dot{
+    background-color: #2A9D8F;
+    height:10px;
+    width:10px;
+    border-radius:50%;
+}
+.register-permission-note{
+    color: #6B7280;
+    font-family:"Roboto";
+    font-size:13px;
+}
+
+.register-submit-card{
+    background-color: #14213D;
+    width:300px;
+    padding:10px;
+    border-width:0px;
+    outline:none;
+    cursor:pointer;
+    font-family: "Roboto";
+    font-size:20px;
+    color: #ffffff;
+    border-radius: 10px;
+}
+
+.register-alredy-account{
+    color: #6B7280;
+    font-family:"Roboto";
+    font-size:13px;
+}
+
+.register-alredy-account-login{
+    color: #14213D;
+    font-family:"Roboto";
+    font-size:13px;
+    font-weight:600;
+    cursor:pointer;
+}

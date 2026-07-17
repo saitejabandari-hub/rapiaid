@@ -9,6 +9,7 @@
     flex-direction: column;
     align-items:center;
     border-radius: 16px;
+    gap:10px;
 }
 
 .donor-page-main-container{
@@ -16,6 +17,8 @@
     flex-direction: column;
     align-items: center;
     padding:20px 10px;
+    flex:1;
+    overflow-y: auto;
     width:100%;
     gap:15px;
 }
@@ -25,8 +28,10 @@
     flex-direction: column;
     background-color: #E63946;
     border-radius: 20px;
-    padding:15px;
+    padding:20px;
     gap:15px;
+    margin-top:15px;
+    margin-bottom: 15px;
 }
 
 .alter-card-heading{
@@ -110,6 +115,7 @@
     padding: 10px;
     gap:15px;
     margin-top:30px;
+    margin-bottom: 50px;
 }
 
 .decline-button{

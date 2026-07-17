@@ -1,16 +1,64 @@
+import { useState,useEffect } from 'react';
+import Cookies from 'js-cookie'
 import Header from '../../components/Header'
 import { FcAlarmClock } from "react-icons/fc";
 
 import './index.css'
 const DonorPage=()=>{
+    const[alterts,setAlerts]=useState([])
+
+    const jwt = Cookies.get("jwt_token")
+
+
+    useEffect(()=>{
+
+        const getmyalert = async()=>{
+
+            const url = "http://localhost:5000/match/get-alert"
+            const options = {
+                method:"GET",
+                headers :{
+                    "Content-Type":"application",
+                    Authorization:`Bearer ${jwt}`
+                }
+            }
+
+            const response = await fetch(url,options)
+            const data = await response.json()
+            if(response.ok){
+                const altersmessage = data.allalerts.map(each =>(
+                    {
+                        bloodgroup: each.details.bloodGroup,
+                        unitsneeded: each.details.unitsNeeded,
+                        lat: each.location.lat,
+                        log: each.location.lon,
+                        resource: each.resourceType,
+                        urgency: each.urgencyLevel,
+                        requestername: each.requesterId.name,
+                        requesternumber: each.requesterId.phone
+                    }
+                ))
+
+                setAlerts(altersmessage)
+                
+            }
+
+        }
+
+        getmyalert()
+
+    },[])
+
 
     return(
         <div className='donor-page-container'>
             <Header/>
-            <div className='donor-page-main-container'>
+            <div className='donor-page-main-container' >
+            {alterts.map((each,index)=>(
+                <div key={index}>
                  <div className='alert-container'>
-                    <h1 className='alter-card-heading'>CRITICAL . BLOOD REQUEST</h1>
-                    <h1 className='alert-required-items'>O NEGAVTIVE NEEDED, 2 UNITS</h1>
+                    <h1 className='alter-card-heading'>{each.urgency} . {each.resource} REQUEST</h1>
+                    <h1 className='alert-required-items'>{each.bloodgroup}, {each.unitsneeded} UNITS</h1>
                     <div className='alert-with-intime'>
                             <FcAlarmClock className='donor-page-clock'/>
                             <p className='alert-time'>Respond with in 04:28</p>
@@ -24,7 +72,7 @@ const DonorPage=()=>{
                         </li>
                         <li className='details-card'>
                             <h1 className='details-heading'>Requested by</h1>
-                            <p className='details-paragraph'>Anitha.k</p>
+                            <p className='details-paragraph'>{each.requestername}</p>
                         </li>
                         <li className='details-card'>
                             <h1 className='details-heading'>Hospital</h1>
@@ -44,6 +92,8 @@ const DonorPage=()=>{
                         I can help
                     </button>
                  </div>
+            </div>
+            ))}
             </div>
         </div>
     )
