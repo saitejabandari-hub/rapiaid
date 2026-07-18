@@ -36,6 +36,7 @@
     border-radius: 10px;
     padding:10px;
     gap:10px;
+    text-decoration:none;
 }
 
 .coordinator-category-card{
@@ -117,9 +118,16 @@
 
 .horizontalline{
     border: 5px solid #2A9D8F;
-    width:90px;
+    width:100px;
     border-radius:10px;
 }
+
+.horizontalline-incompleted{
+    border: 5px solid #d0d6d6;
+    width:100px;
+    border-radius:10px;
+}
+
 
 .updated-name{
     font-family:"Roboto";

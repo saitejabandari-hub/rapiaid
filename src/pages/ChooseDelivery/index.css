@@ -50,9 +50,10 @@
     padding: 20px;
     border-radius: 15px;
     cursor:pointer;
+    transition: 0.2s ease;
 }
 .choosedelivery-choosetravel-card:hover{
-    background-color:#ddfbdc ;
+    transform: scale(1.02);
 }
 
 .choosedelivery-choosetravel-card-selected{

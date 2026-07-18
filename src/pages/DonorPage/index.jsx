@@ -1,4 +1,5 @@
 import { useState,useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie'
 import Header from '../../components/Header'
 import { FcAlarmClock } from "react-icons/fc";
@@ -6,6 +7,7 @@ import { FcAlarmClock } from "react-icons/fc";
 import './index.css'
 const DonorPage=()=>{
     const[alterts,setAlerts]=useState([])
+    const navigate = useNavigate()
 
     const jwt = Cookies.get("jwt_token")
 
@@ -27,15 +29,15 @@ const DonorPage=()=>{
             const data = await response.json()
             if(response.ok){
                 const altersmessage = data.allalerts.map(each =>(
-                    {
-                        bloodgroup: each.details.bloodGroup,
-                        unitsneeded: each.details.unitsNeeded,
-                        lat: each.location.lat,
-                        log: each.location.lon,
-                        resource: each.resourceType,
-                        urgency: each.urgencyLevel,
-                        requestername: each.requesterId.name,
-                        requesternumber: each.requesterId.phone
+                    {   matchId: each.matchId,
+                        bloodgroup: each.request.details.bloodGroup,
+                        unitsneeded: each.request.details.unitsNeeded,
+                        lat: each.request.location.lat,
+                        log: each.request.location.lon,
+                        resource: each.request.resourceType,
+                        urgency: each.request.urgencyLevel,
+                        requestername: each.request.requesterId.name,
+                        requesternumber: each.request.requesterId.phone
                     }
                 ))
 
@@ -48,6 +50,10 @@ const DonorPage=()=>{
         getmyalert()
 
     },[])
+
+    const OnAcceptTherequest =(alertdata) =>{
+        navigate(`/choose-delivery/${alertdata.matchId}`,{state:alertdata})
+    }
 
 
     return(
@@ -88,9 +94,11 @@ const DonorPage=()=>{
                     <button type='button' className='decline-button'>
                         Decline
                     </button>
-                    <button type='button' className='help-button'>
-                        I can help
-                    </button>
+                   
+                        <button type='button' className='help-button' onClick={()=>{OnAcceptTherequest(each)}}>
+                            I can help
+                        </button>
+                  
                  </div>
             </div>
             ))}

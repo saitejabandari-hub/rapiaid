@@ -77,6 +77,8 @@ const Register = () =>{
 
     }
 
+
+
     return(
         <div className='register-container'>
             <Headerforentering/>

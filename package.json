@@ -12,9 +12,12 @@
   "dependencies": {
     "js-cookie": "^3.0.8",
     "js-cookies": "^1.0.4",
+    "leaflet": "^1.9.4",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
-    "react-icons": "^5.7.0"
+    "react-icons": "^5.7.0",
+    "react-leaflet": "^5.0.0",
+    "react-router-dom": "^7.18.1"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",

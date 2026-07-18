@@ -2,7 +2,22 @@ import { useState,useEffect } from 'react';
 import Cookies from "js-cookie"
 import Header from '../../components/Header'
 import { MdOutlineBloodtype } from "react-icons/md";
+import { MapContainer, TileLayer, Marker, useMapEvents } from 'react-leaflet'
+import 'leaflet/dist/leaflet.css'
+import L from 'leaflet'
+
 import './index.css'
+
+const LocationPicker = ({ onPick }) => {
+    useMapEvents({
+        click(e) {
+            onPick(e.latlng.lat, e.latlng.lng)
+        }
+    })
+    return null
+}
+
+
 
 const RequestPage =()=>{
     const[resource,setResource]=useState('')
@@ -16,6 +31,14 @@ const RequestPage =()=>{
     const[urgency,setUrgency]=useState('')
     const[lat,setLat]=useState('')
     const[lon,setLon]=useState('')
+    const [description, setDescription] = useState('')
+
+    delete L.Icon.Default.prototype._getIconUrl
+    L.Icon.Default.mergeOptions({
+        iconRetinaUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png',
+        iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png',
+        shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
+    })
 
 
 
@@ -99,12 +122,61 @@ const RequestPage =()=>{
 
     }
 
+ const onAutoFill = async () => {
+    const jwt = Cookies.get("jwt_token")
+
+    const url = "http://localhost:5000/ai/parse-request"
+    const options = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${jwt}`
+        },
+        body: JSON.stringify({ description })
+    }
+
+    try {
+        const response = await fetch(url, options)
+        const data = await response.json()
+
+        if (response.ok) {
+            setResource(data.resourceType)
+            if (data.bloodGroup) setBloodgroup(data.bloodGroup)
+            if (data.unitsNeeded) setUnits(data.unitsNeeded)
+            if (data.cylinderSize) setCylindersize(data.cylinderSize)
+            if (data.quantity) setQuantity(data.quantity)
+            if (data.medicineName) setMedicine(data.medicineName)
+            if (data.pickupLocation) setPickup(data.pickupLocation)
+            if (data.destination) setDestination(data.destination)
+            if (data.urgencyLevel) setUrgency(data.urgencyLevel)
+        } else {
+            console.log("Failed:", data.message)
+        }
+
+    } catch (error) {
+        console.log("Something went wrong:", error.message)
+    }
+}
+
 return(
     
     <div className="request-page-container">
         <Header/>
        
         <div className='request-page-main-container'>
+
+            <div className="request-page-input-card">
+            <label className="request-page-input-label">Describe your emergency (AI-powered)</label>
+            <textarea
+                value={description}
+                className="request-page-input"
+                placeholder="e.g. My mother needs 2 units of O negative blood urgently at City Care Hospital"
+                onChange={(e) => { setDescription(e.target.value) }}
+                />
+                <button type="button" className="request-page-button" onClick={onAutoFill}>
+                    ✨ Auto-fill with AI
+                </button>
+        </div>
            
              <ul className='request-page-category-container' >
                 {categories.map((each,index)=>(
@@ -186,14 +258,32 @@ return(
             </ul>
             </div>
             
-             <div className="request-page-input-card">
-                <label className="request-page-input-label">Location</label>
-                <input type="text" 
-                value={lat && lon ? `📍 Location captured (${lat.toFixed(4)}, ${lon.toFixed(4)})` : "Fetching your location..."}
-                className="request-page-input" placeholder="Enter location" readOnly/>
+            <div className="request-page-input-card">
+                    <label className="request-page-input-label">Location (tap map to change)</label>
 
-           
-        </div>
+                    {lat && lon ? (
+                        <>
+                            <MapContainer
+                                center={[lat, lon]}
+                                zoom={14}
+                                style={{ height: '200px', width: '100%', borderRadius: '12px' }}
+                            >
+                                <TileLayer
+                                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                                    attribution='&copy; OpenStreetMap contributors'
+                                />
+                                <Marker position={[lat, lon]} />
+                                <LocationPicker onPick={(newLat, newLon) => { setLat(newLat); setLon(newLon) }} />
+                            </MapContainer>
+
+                            <p style={{ fontSize: '12px', color: '#6B7280', marginTop: '6px' }}>
+                                📍 {lat.toFixed(4)}, {lon.toFixed(4)}
+                            </p>
+                        </>
+                    ) : (
+                        <p>Fetching your location...</p>
+                    )}
+            </div>
 
         <div className="request-page-button-card">
                     <button type="button" className="request-page-button" onClick={onSendRequest}>
