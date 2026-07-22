@@ -7,6 +7,7 @@ import"./index.css"
 const Login =()=>{
     const [emailornumber,setEmailornumber]=useState('')
     const [password,setPassword]=useState('')
+    const[goterror,setGoterror] = useState()
     const navigate= useNavigate()
 
       const jwt = Cookies.get('jwt_token')
@@ -73,7 +74,8 @@ const Login =()=>{
                  window.location.href = '/'
                
             } else {
-                console.log("Login failed:", data.message)
+                
+                setGoterror(data.message)
          }
 
         }catch(error){
@@ -93,6 +95,7 @@ const Login =()=>{
                            EMAIL OR PHONE NUMBER
                         </label>
                         <input type="text" value={emailornumber} className='login-input' placeholder='Enter email or phone number' onChange={(e)=>{setEmailornumber(e.target.value)}} />
+                        
                 </div>
                 <div className='login-input-card'>
                         <label className='login-label'>
@@ -100,7 +103,7 @@ const Login =()=>{
                         </label>
                         <input type="password" value={password} className='login-input' placeholder='Enter your password'  onChange={(e)=>{setPassword(e.target.value)}} />
                 </div>
-
+                    <p className='login-error'>{goterror}</p>
                  <button type="submit" className='login-submit-card' >
                         Login
                 </button>

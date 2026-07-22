@@ -17,6 +17,7 @@ const Register = () =>{
     const [lon, setLon] = useState(null)
     const navigate = useNavigate()
     const[loader,setLoader]=useState(false)
+    const[goterror,setGoterror] = useState()
 
 
       const categories = [
@@ -76,7 +77,8 @@ const Register = () =>{
                 setLoader(false)
                 window.location.href = `/${data.userdetails.role}`
             } else {
-                console.log("Registration failed:", data.message)
+                
+                 setGoterror(data.message)
             }
 
       }catch(error){
@@ -169,6 +171,8 @@ const Register = () =>{
                     </p>
 
                 </div>
+
+                    <p className='register-error'>{goterror}</p>
 
                 <button type="submit" className='register-submit-card'  >
                         Create Account

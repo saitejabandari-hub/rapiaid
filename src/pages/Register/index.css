@@ -243,3 +243,12 @@
     cursor:pointer;
     text-decoration: none;
 }
+
+.register-error{
+
+    color: #c62d03;
+    font-family:"Roboto";
+    font-size:13px;
+    margin-top: 40px;
+
+}
