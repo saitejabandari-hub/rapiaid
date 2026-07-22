@@ -13,7 +13,7 @@ const ChooseDelivery =()=>{
     const [deliverMode, setDeliverMode] = useState('needs_pickup')
     const [donorLat, setDonorLat] = useState(null)
     const [donorLon, setDonorLon] = useState(null)
-    const[loader,setLoader]=useEffect(false)
+    const[loader,setLoader]=useState(false)
     const navigate = useNavigate()
 
     const jwt = Cookies.get("jwt_token")

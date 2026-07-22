@@ -25,7 +25,7 @@ const RequestPage =()=>{
     const[lon,setLon]=useState('')
     const [description, setDescription] = useState('')
     const navigate = useNavigate()
-    const[loader,setLoader]=useEffect(false)
+    const[loader,setLoader]=useState(false)
 
     delete L.Icon.Default.prototype._getIconUrl //This code pasted from AI
     L.Icon.Default.mergeOptions({

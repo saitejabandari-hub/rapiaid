@@ -13,7 +13,7 @@ const TrackingPickup =()=>{
     const [requesterLocation, setRequesterLocation] = useState(null)
     const [myLat, setMyLat] = useState(null)
     const [myLon, setMyLon] = useState(null)
-    const[loader,setLoader]=useEffect(false)
+    const[loader,setLoader]=useState(false)
 
     const jwt = Cookies.get("jwt_token")
 

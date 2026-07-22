@@ -6,7 +6,7 @@ import Loader from '../../components/Loader'
 import './index.css'
 
 const TrackingNgo =()=>{
-    const[loader,setLoader]=useEffect(true)
+    const[loader,setLoader]=useState(false)
     return(
        <div className="trackingpickup-container">
     <Header/>

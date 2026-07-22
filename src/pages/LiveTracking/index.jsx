@@ -12,7 +12,7 @@ const LiveTracking =()=>{
     const [ngoStatus, setNgoStatus] = useState(null)
     const [donor,setDonor]=useState(null)
     const [request,setRequest]=useState(null)
-    const[loader,setLoader]=useEffect(false)
+    const[loader,setLoader]=useState(false)
     
     const {requestId} = useParams()
 

@@ -9,7 +9,7 @@ import './index.css'
 const NgoRequest =()=>{
     const[myassignment,setMyassignment]=useState(null)
     const[deliverstatus,setDeliverstatus]=useState('')
-    const[loader,setLoader]=useEffect(false)
+    const[loader,setLoader]=useState(false)
     const{assignmentId} = useParams()
 
     const jwt = Cookies.get("jwt_token")

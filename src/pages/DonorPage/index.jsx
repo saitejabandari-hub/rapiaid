@@ -8,7 +8,7 @@ import Loader from '../../components/Loader'
 import './index.css'
 const DonorPage=()=>{
     const[alterts,setAlerts]=useState([])
-    const[loader,setLoader]=useEffect(false)
+    const[loader,setLoader]=useState(false)
     const navigate = useNavigate()
 
     const jwt = Cookies.get("jwt_token")

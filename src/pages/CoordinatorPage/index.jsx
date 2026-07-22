@@ -8,7 +8,7 @@ import Loader from '../../components/Loader'
 import './index.css'
 const CoordinatorPage =() =>{
     const[ assignment, setAssignment]=useState([])
-     const[loader,setLoader]=useEffect(false)
+    const[loader,setLoader]=useState(false)
 
     const jwt = Cookies.get("jwt_token")
 
