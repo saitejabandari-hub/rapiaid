@@ -98,7 +98,7 @@ const RequestPage =()=>{
 
         const requestdetails = {
             resource,
-            bloodGroup: bloodgroup,
+            bloodGroup: bloodgroup.trim().toLowerCase(),
             unitsNeeded: units,
             cylinderSize: cylindersize,
             quantity,

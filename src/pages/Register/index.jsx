@@ -51,7 +51,7 @@ const Register = () =>{
             phone,
             password,
             role,
-            bloodGroup:bloodgroup,
+            bloodGroup:bloodgroup.trim().toLowerCase(),
             resourceTypesOffered:[resource],
             lat,
             lon
