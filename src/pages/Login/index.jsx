@@ -87,7 +87,7 @@ const Login =()=>{
 
     return(
         <div className='login-container'>
-            <Headerforentering/>
+            <Headerforentering subtitle="Welcome back" />
             <form className='login-main-container' onSubmit={onSubmitLogin}>
                 <div className='login-input-card'>
                         <label className='login-label'>

@@ -1,11 +1,11 @@
 
 import './index.css'
-const Headerforentering=()=>{
+const Headerforentering=({subtitles})=>{
 
     return(
          <nav className='enterheader-heading-card'>
             <h1 className='enterheader-heading'>Rapid<span className='sub-heading'>Aid</span> </h1>
-            <p className='enterheader-heading-paragraph'>Create your account</p>
+            <p className='enterheader-heading-paragraph'>{subtitles}</p>
         </nav>
     )
 

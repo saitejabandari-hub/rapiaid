@@ -99,7 +99,7 @@ const Register = () =>{
 
     return(
         <div className='register-container'>
-            <Headerforentering/>
+            <Headerforentering subtitle="Create your account" />
             <form className='register-main-container' onSubmit={onSubmitRegisteration}>
                 <div className='register-input-container'>
                     <div className='register-input-card'>
