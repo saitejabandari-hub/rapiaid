@@ -1,4 +1,5 @@
-import { BrowserRouter, Routes, Route, data } from 'react-router-dom'
+import { BrowserRouter, Routes, Route,Navigate   } from 'react-router-dom'
+
 import { useState,useEffect } from 'react'
 import Cookies from "js-cookie"
 
@@ -60,7 +61,20 @@ const  App = ()=>{
   
         return(
             <BrowserRouter>
+                    
+
+
                    <Routes>
+
+                    <Route
+                        path="/"
+                        element={
+                            user
+                                ? <Navigate to={`/${user.role}`} replace />
+                                : <Navigate to="/login" replace />
+                        }
+                    />
+
                      <Route path="/register"
                         element={
                             <PublicRoute user={user}>
