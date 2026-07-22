@@ -1,43 +1,49 @@
-
+import { useState } from 'react'
 import './index.css'
 
-const Timeline=()=>{
+const Timeline=({request})=>{
+    
+     if (!request) {
+        return <p>Loading timeline...</p>
+    }
+
+    
     return(
         <div className="livetracking-time-line-container">
                     <div className="livetracking-dot-card">
-                        <div className="dot-card dot-completed"></div>
+                        <div className={request.status ==="open" || request.status === "matched" || request.status === "ngo_assigned" || request.status === "picked_up" || request.status === "devlivered" ? "dot-card dot-completed":"dot-card"}></div>
                         <p className="time-line-name">Request raised</p>
                     </div>
-                    <div className="livetracking-line-card line-completed">
-                        <p className="livetracking-line-time">7:02 pm</p>
+                    <div className= {request.status === "matched" || request.status === "ngo_assigned" || request.status === "picked_up" || request.status === "devlivered" ? "livetracking-line-card line-completed":"livetracking-line-card"}>
+                        <p className="livetracking-line-time"></p>
                     </div>
                      <div className="livetracking-dot-card">
-                        <div className="dot-card dot-completed"></div>
+                        <div className={request.status === "matched" || request.status === "ngo_assigned" || request.status === "picked_up" || request.status === "devlivered" ? "dot-card dot-completed":"dot-card"}></div>
                         <p className="time-line-name ">Donor matched & accepted</p>
                     </div>
-                    <div className="livetracking-line-card line-completed">
-                        <p className="livetracking-line-time">7:04 pm</p>
+                    <div className={request.status === "ngo_assigned" || request.status === "picked_up" || request.status === "devlivered" ? "livetracking-line-card line-completed":"livetracking-line-card"}>
+                        <p className="livetracking-line-time"></p>
                     </div>
                      <div className="livetracking-dot-card">
-                        <div className="dot-card dot-completed"></div>
+                        <div className={request.status === "ngo_assigned" || request.status === "picked_up" || request.status === "devlivered" ? "dot-card dot-completed":"dot-card"}></div>
                         <p className="time-line-name">NGO Volunteer assigned</p>
                     </div>
-                    <div className="livetracking-line-card line-completed">
-                        <p className="livetracking-line-time">7:06 pm</p>
+                    <div className={request.status === "picked_up" || request.status === "devlivered" ? "livetracking-line-card line-completed":"livetracking-line-card"}>
+                        <p className="livetracking-line-time"></p>
                     </div>
                      <div className="livetracking-dot-card">
-                        <div className="dot-card"></div>
+                        <div className={request.status === "picked_up" || request.status === "devlivered" ? "dot-card dot-completed":"dot-card"}></div>
                         <p className="time-line-name">Picked up</p>
                     </div>
-                    <div className="livetracking-line-card">
-                        <p className="livetracking-line-time">In progress</p>
+                    <div className={request.status === "devlivered" ? "livetracking-line-card line-completed":"livetracking-line-card"}>
+                        <p className="livetracking-line-time">{}</p>
                     </div>
                      <div className="livetracking-dot-card">
-                        <div className="dot-card"></div>
+                        <div className={request.status === "devlivered" ? "dot-card dot-completed":"dot-card"}></div>
                         <p className="time-line-name">Delivered</p>
                     </div>
                     <div className="livetracking-line-end-card">
-                        <p className="livetracking-line-time">pending</p>
+                        <p className="livetracking-line-time"></p>
                     </div>
                 </div>
 

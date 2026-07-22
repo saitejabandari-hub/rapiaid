@@ -17,7 +17,7 @@ const NgoRequest =()=>{
         const getmyassignments = async()=>{
             try{
 
-                const url = "http://localhost:5000/ngo/my-assignments"
+                const url = "https://rapidaid-back.onrender.com/ngo/my-assignments"
 
                 const options = {
                     method: "GET",
@@ -51,7 +51,7 @@ const NgoRequest =()=>{
        try{
 
 
-            const url =`http://localhost:5000/ngo/update-status/${assignmentId}`
+            const url =`https://rapidaid-back.onrender.com/ngo/update-status/${assignmentId}`
             const options = {
                 method:"PUT",
                 headers:{
@@ -128,9 +128,9 @@ const NgoRequest =()=>{
 
                     {myassignment.status === "assigned"?<button type="button" className="NgoRequest-button" onClick={()=>{onClickPicked("picked_up")}}>
                         Marks as picked up
-                    </button> : <button type="button" className="NgoRequest-button" onClick={()=>{onClickPicked('delivered')}}>
+                    </button> : myassignment.status === "picked_up"?<button type="button" className="NgoRequest-button" onClick={()=>{onClickPicked('delivered')}}>
                         Marks as delivered
-                    </button> }
+                    </button>:  <p className="NgoRequest-name">Task completed ✅</p>}
 
                 </div>}
             </div>

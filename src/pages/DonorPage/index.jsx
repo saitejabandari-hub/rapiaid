@@ -16,7 +16,7 @@ const DonorPage=()=>{
 
         const getmyalert = async()=>{
 
-            const url = "http://localhost:5000/match/get-alert"
+            const url = "https://rapidaid-back.onrender.com/match/get-alert"
             const options = {
                 method:"GET",
                 headers :{
@@ -48,6 +48,15 @@ const DonorPage=()=>{
         }
 
         getmyalert()
+
+        const callApi = setInterval(()=>{
+            getmyalert()
+            console.log("hello")
+        },5000)
+
+        return ()=>{
+            clearInterval(callApi)
+        }
 
     },[])
 

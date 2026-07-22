@@ -12,7 +12,7 @@ const CoordinatorPage =() =>{
 
     useEffect(()=>{
         const getassignments = async()=>{
-            const url = "http://localhost:5000/ngo/my-assignments"
+            const url = "https://rapidaid-back.onrender.com/ngo/my-assignments"
 
             const options = {
                 method: "GET",

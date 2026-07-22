@@ -1,6 +1,7 @@
-import { useState } from 'react'
+import { useState,useEffect } from 'react'
 import Cookies from "js-cookie"
 import Headerforentering from '../../components/Headerforentering'
+import {Link, useNavigate } from 'react-router-dom'
 
 import './index.css'
 const Register = () =>{
@@ -11,7 +12,9 @@ const Register = () =>{
     const[role,setRole]=useState('')
     const[bloodgroup,setBloodgroup]=useState('')
     const[resource,setResource]=useState('')
-
+    const [lat, setLat] = useState(null)
+    const [lon, setLon] = useState(null)
+    const navigate = useNavigate()
 
 
       const categories = [
@@ -47,11 +50,13 @@ const Register = () =>{
             role,
             bloodGroup:bloodgroup,
             resourceTypesOffered:[resource],
+            lat,
+            lon
 
         }
 
       try{
-            const url = "http://localhost:5000/auth/register"
+            const url = "https://rapidaid-back.onrender.com/auth/register"
             const options = {
                 method:"POST",
                 headers: {
@@ -65,7 +70,7 @@ const Register = () =>{
 
             if(response.ok){
                 Cookies.set("jwt_token",data.token,{expires:30})
-                console.log(data.message)
+                navigate(`/${data.user.role}`)
             } else {
                 console.log("Registration failed:", data.message)
             }
@@ -77,6 +82,19 @@ const Register = () =>{
 
     }
 
+    useEffect(() => {
+    navigator.geolocation.getCurrentPosition(
+        (position) => {
+            setLat(position.coords.latitude)
+            setLon(position.coords.longitude)
+        },
+        (error) => {
+            console.log("Could not get location:", error.message)
+        }
+        )
+    }, [])
+
+   
 
 
     return(
@@ -147,10 +165,10 @@ const Register = () =>{
 
                 </div>
 
-                <button type="submit" className='register-submit-card' >
+                <button type="submit" className='register-submit-card'  >
                         Create Account
                 </button>
-                <p className='register-alredy-account'>Already have an account ? <a className='register-alredy-account-login'>LogIn</a></p>
+                <p className='register-alredy-account'>Already have an account ? <Link to="/Login" className='register-alredy-account-login'  >LogIn</Link></p>
             </form>
         </div>
     )

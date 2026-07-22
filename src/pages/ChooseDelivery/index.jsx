@@ -3,6 +3,7 @@ import { useState,useEffect } from "react";
 import Header from "../../components/Header";
 import Cookies from 'js-cookie'
 
+
 import "./index.css"
 const ChooseDelivery =()=>{
     const {matchId} = useParams()
@@ -14,6 +15,7 @@ const ChooseDelivery =()=>{
     const navigate = useNavigate()
 
     const jwt = Cookies.get("jwt_token")
+   
 
     useEffect(() => {
         navigator.geolocation.getCurrentPosition(  // this was pasted from AI
@@ -53,7 +55,7 @@ const ChooseDelivery =()=>{
 
         try{
 
-            const url = `http://localhost:5000/match/respond/${matchId}`
+            const url = `https://rapidaid-back.onrender.com/match/respond/${matchId}`
 
             const options = {
                 method:"PUT",
@@ -71,7 +73,7 @@ const ChooseDelivery =()=>{
             
             if (response.ok) {
                 console.log(data.message)
-                navigate("/donor-tracking")
+                navigate(`/donor-tracking/${matchId}`)
             }
 
         }catch(error){

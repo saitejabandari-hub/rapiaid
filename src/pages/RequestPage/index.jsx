@@ -1,4 +1,5 @@
 import { useState,useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Cookies from "js-cookie"
 import Header from '../../components/Header'
 import { MdOutlineBloodtype } from "react-icons/md";
@@ -7,16 +8,6 @@ import 'leaflet/dist/leaflet.css'
 import L from 'leaflet'
 
 import './index.css'
-
-const LocationPicker = ({ onPick }) => {
-    useMapEvents({
-        click(e) {
-            onPick(e.latlng.lat, e.latlng.lng)
-        }
-    })
-    return null
-}
-
 
 
 const RequestPage =()=>{
@@ -32,8 +23,9 @@ const RequestPage =()=>{
     const[lat,setLat]=useState('')
     const[lon,setLon]=useState('')
     const [description, setDescription] = useState('')
+    const navigate = useNavigate()
 
-    delete L.Icon.Default.prototype._getIconUrl
+    delete L.Icon.Default.prototype._getIconUrl //This code pasted from AI
     L.Icon.Default.mergeOptions({
         iconRetinaUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png',
         iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png',
@@ -65,11 +57,25 @@ const RequestPage =()=>{
         },
     ]
 
-    const jwt = Cookies.get("jwt_token")
+    const LocationPicker = ({ onPick }) => {  //This code pasted from AI
+    useMapEvents({
+        click(e) {
+            onPick(e.latlng.lat, e.latlng.lng)
+        }
+    })
+    return null
+
+   
+}
+
+ const jwt = Cookies.get("jwt_token")
+
+ 
+  
 
     useEffect(() => {
 
-        const getLocation = () => {
+        const getLocation = () => {   //This code pasted from AI
         navigator.geolocation.getCurrentPosition(
             (position) => {
                 setLat(position.coords.latitude)
@@ -83,10 +89,6 @@ const RequestPage =()=>{
 
         getLocation()
     }, [])
-
-    
-    
-
 
     const onSendRequest= async()=>{
         const requestdetails = {
@@ -103,7 +105,7 @@ const RequestPage =()=>{
             lon
         }
 
-        const url = "http://localhost:5000/req/createrequest"
+        const url = "https://rapidaid-back.onrender.com/req/createrequest"
         const options = {
             method:"POST",
             headers:{
@@ -115,17 +117,17 @@ const RequestPage =()=>{
 
         const response = await fetch(url,options)
         const data = await response.json()
-        if(response.ok){
-            console.log(data.message)
+        if (response.ok) {
+            navigate(`/request-livetrack/${data.request._id}`)
         }
 
 
     }
 
- const onAutoFill = async () => {
+ const onAutoFill = async () => {  //This code pasted from AI
     const jwt = Cookies.get("jwt_token")
 
-    const url = "http://localhost:5000/ai/parse-request"
+    const url = "https://rapidaid-back.onrender.com/ai/parse-request"
     const options = {
         method: "POST",
         headers: {
@@ -258,12 +260,12 @@ return(
             </ul>
             </div>
             
-            <div className="request-page-input-card">
-                    <label className="request-page-input-label">Location (tap map to change)</label>
+            <div className="request-page-input-card">  
+                    <label className="request-page-input-label">Location (tap map to change)</label>  
 
                     {lat && lon ? (
                         <>
-                            <MapContainer
+                            <MapContainer // this was pasted from AI
                                 center={[lat, lon]}
                                 zoom={14}
                                 style={{ height: '200px', width: '100%', borderRadius: '12px' }}
