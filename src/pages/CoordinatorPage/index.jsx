@@ -3,14 +3,17 @@ import { Link } from "react-router-dom";
 import Header from "../../components/Header"
 import { GoArrowRight } from "react-icons/go";
 import Cookies from "js-cookie"
+import Loader from '../../components/Loader'
 
 import './index.css'
 const CoordinatorPage =() =>{
     const[ assignment, setAssignment]=useState([])
+     const[loader,setLoader]=useEffect(false)
 
     const jwt = Cookies.get("jwt_token")
 
     useEffect(()=>{
+        setLoader(true)
         const getassignments = async()=>{
             const url = "https://rapidaid-back.onrender.com/ngo/my-assignments"
 
@@ -25,7 +28,7 @@ const CoordinatorPage =() =>{
             const data  = await response.json()
             if(response.ok){
                 setAssignment(data.combained)
-                console.log(data.combained)
+                setLoader(false)
             }
 
            
@@ -40,7 +43,7 @@ const CoordinatorPage =() =>{
         <div className="coordinator-Container">
             <Header  subtitles={"Somebody want's you to deliver product"} />
             <div className="coordinator-Main-Container">
-                <ul className="coordinator-assigned-pickup-container">
+                {loader ? <Loader/>:<><ul className="coordinator-assigned-pickup-container">
 
                     {assignment.map((each,index)=>(
                         <li key={index}>
@@ -82,7 +85,7 @@ const CoordinatorPage =() =>{
                     </li>
                     ))}                      
 
-                </ul>
+                </ul></>}
             </div>
         </div>
     )

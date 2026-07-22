@@ -3,6 +3,7 @@ import { useState,useEffect } from "react"
 import Cookies from 'js-cookie'
 import Header from "../../components/Header"
 import RouteMap from "../../components/RouteMap"
+import Loader from '../../components/Loader'
 import './index.css'
 
 const TrackingPickup =()=>{
@@ -12,6 +13,7 @@ const TrackingPickup =()=>{
     const [requesterLocation, setRequesterLocation] = useState(null)
     const [myLat, setMyLat] = useState(null)
     const [myLon, setMyLon] = useState(null)
+    const[loader,setLoader]=useEffect(false)
 
     const jwt = Cookies.get("jwt_token")
 
@@ -19,6 +21,8 @@ const TrackingPickup =()=>{
 
     useEffect(() => {
         const getStatus = async () => {
+
+            setLoader(true)
           
             const url = `https://rapidaid-back.onrender.com/match/status/${matchId}`
             const options = {
@@ -35,7 +39,7 @@ const TrackingPickup =()=>{
                     setMatchStatus(data.matchStatus)
                     setNgoInfo(data.ngoInfo)
                     setRequesterLocation(data.requesterLocation)
-                    console.log(data)
+                    setLoader(false)
                 }
             } catch (error) {
                 console.log(error.message)
@@ -66,7 +70,7 @@ const TrackingPickup =()=>{
        <div className="trackingpickup-container">
     <Header  subtitles={"Tracking you request"}/>
     <div className="trackingpickup-main-container">
-        {!ngoInfo ? (
+       {loader ? <Loader/>:<> {!ngoInfo ? (
                     <div className="trackingpickup-headding-card">
                         <h1 className="trackingpickup-heading">Coordinating pickup...</h1>
                         <p className="trackingpickup-matched-time">An NGO volunteer will be assigned shortly</p>
@@ -98,10 +102,7 @@ const TrackingPickup =()=>{
                 requesterLat={requesterLocation.lat}
                 requesterLon={requesterLocation.lon}
             />
-        )}
-
-      
-       
+        )}</>}
         
     </div>
 </div>

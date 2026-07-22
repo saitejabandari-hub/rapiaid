@@ -4,6 +4,7 @@ import Cookies from "js-cookie"
 import Header from "../../components/Header"
 import Timeline from"../../components/Timeline"
 import RouteMap from "../../components/RouteMap"
+import Loader from '../../components/Loader'
 
 import './index.css'
 
@@ -11,6 +12,7 @@ const LiveTracking =()=>{
     const [ngoStatus, setNgoStatus] = useState(null)
     const [donor,setDonor]=useState(null)
     const [request,setRequest]=useState(null)
+    const[loader,setLoader]=useEffect(false)
     
     const {requestId} = useParams()
 
@@ -20,6 +22,7 @@ const LiveTracking =()=>{
 
         
         const getstatus = async()=>{
+            setLoader(true)
             const url= `https://rapidaid-back.onrender.com/req/getstatus/${requestId}`
 
             const options={
@@ -37,6 +40,7 @@ const LiveTracking =()=>{
                 setNgoStatus(data.ngoStatus)
                 setDonor(data.acceptedDonor)
                 setRequest(data.request)
+                setLoader(false)
             }
 
 
@@ -52,7 +56,7 @@ const LiveTracking =()=>{
         <div className="livetracking-container">
             <Header  subtitles={"Ask your request"} />
             <div className="livetracking-main-container">
-                {donor ? <><div className="livetracking-headding-card">
+                {loader?<Loader/>:<>{donor ? <><div className="livetracking-headding-card">
                     <h1 className="livetracking-heading">Donor on the way</h1>
                     <p className="livetracking-matched-time">Matched in 2 min 40 sec</p>
                 </div>
@@ -74,7 +78,7 @@ const LiveTracking =()=>{
 
                 </> : <p className="livetracking-donor-profile-letters">waiting for donor</p>}
 
-                <Timeline request={request}/>
+                <Timeline request={request}/></>}
                 
             </div>
         </div>

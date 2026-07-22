@@ -3,10 +3,12 @@ import { useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie'
 import Header from '../../components/Header'
 import { FcAlarmClock } from "react-icons/fc";
+import Loader from '../../components/Loader'
 
 import './index.css'
 const DonorPage=()=>{
     const[alterts,setAlerts]=useState([])
+    const[loader,setLoader]=useEffect(false)
     const navigate = useNavigate()
 
     const jwt = Cookies.get("jwt_token")
@@ -15,6 +17,8 @@ const DonorPage=()=>{
     useEffect(()=>{
 
         const getmyalert = async()=>{
+
+            setLoader(true)
 
             const url = "https://rapidaid-back.onrender.com/match/get-alert"
             const options = {
@@ -42,6 +46,7 @@ const DonorPage=()=>{
                 ))
 
                 setAlerts(altersmessage)
+                setLoader(false)
                 
             }
 
@@ -69,7 +74,7 @@ const DonorPage=()=>{
         <div className='donor-page-container'>
             <Header  subtitles={"Somebody needby you need help"} />
             <div className='donor-page-main-container' >
-            {alterts.map((each,index)=>(
+                {loader? <Loader/>:<>{alterts.map((each,index)=>(
                 <div key={index}>
                  <div className='alert-container'>
                     <h1 className='alter-card-heading'>{each.urgency} . {each.resource} REQUEST</h1>
@@ -110,7 +115,7 @@ const DonorPage=()=>{
                   
                  </div>
             </div>
-            ))}
+            ))}</>}
             </div>
         </div>
     )

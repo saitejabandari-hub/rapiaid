@@ -3,11 +3,13 @@ import { useParams } from "react-router-dom"
 import Header from "../../components/Header"
 import Cookies from "js-cookie"
 import RouteMap from '../../components/RouteMap'
+import Loader from '../../components/Loader'
 
 import './index.css'
 const NgoRequest =()=>{
     const[myassignment,setMyassignment]=useState(null)
     const[deliverstatus,setDeliverstatus]=useState('')
+    const[loader,setLoader]=useEffect(false)
     const{assignmentId} = useParams()
 
     const jwt = Cookies.get("jwt_token")
@@ -15,6 +17,7 @@ const NgoRequest =()=>{
     useEffect(()=>{
 
         const getmyassignments = async()=>{
+            setLoader(true)
             try{
 
                 const url = "https://rapidaid-back.onrender.com/ngo/my-assignments"
@@ -33,6 +36,7 @@ const NgoRequest =()=>{
                     (each) => each.assignmentId === assignmentId
                 )
                 setMyassignment(thisone)
+                setLoader(false)
             }
 
             }catch(error){
@@ -80,7 +84,7 @@ const NgoRequest =()=>{
         <div className="NgoRequest-container">
             <Header  subtitles={"your assigned assiments"} />
             <div className="NgoRequest-main-container">
-                {myassignment && <div className="NgoRequest-details-card">
+                {loader ? <Loader/>:<>{myassignment && <div className="NgoRequest-details-card">
                     <div className="NgoRequest-category-pickup-card">
                         <p className="NgoRequest-category">{myassignment.resourceType} · {myassignment.details.bloodGroup} · {myassignment.details.unitsNeeded} units</p>
                         <p className="NgoRequest-category-situation">{myassignment.urgencyLevel}</p>
@@ -132,7 +136,7 @@ const NgoRequest =()=>{
                         Marks as delivered
                     </button>:  <p className="NgoRequest-name">Task completed ✅</p>}
 
-                </div>}
+                </div>}</>}
             </div>
         </div>
     )

@@ -2,6 +2,7 @@ import { useParams,useLocation, useNavigate } from "react-router-dom";
 import { useState,useEffect } from "react";
 import Header from "../../components/Header";
 import Cookies from 'js-cookie'
+import Loader from '../../components/Loader'
 
 
 import "./index.css"
@@ -12,6 +13,7 @@ const ChooseDelivery =()=>{
     const [deliverMode, setDeliverMode] = useState('needs_pickup')
     const [donorLat, setDonorLat] = useState(null)
     const [donorLon, setDonorLon] = useState(null)
+    const[loader,setLoader]=useEffect(false)
     const navigate = useNavigate()
 
     const jwt = Cookies.get("jwt_token")
@@ -53,6 +55,8 @@ const ChooseDelivery =()=>{
 
     const onConfirmrequest = async() => {
 
+        setLoader(true)
+
         try{
 
             const url = `https://rapidaid-back.onrender.com/match/respond/${matchId}`
@@ -72,7 +76,7 @@ const ChooseDelivery =()=>{
             const data = await response.json()
             
             if (response.ok) {
-                console.log(data.message)
+                setLoader(false)
                 navigate(`/donor-tracking/${matchId}`)
             }
 
@@ -86,7 +90,7 @@ const ChooseDelivery =()=>{
         <div className="choosedelivery-container">
             <Header subtitles={"Somebody needby you need help"}/>
             <div className="choosedelivery-main-card">
-                 <div className="choosedelivery-accepted-card">
+                {loader ? <Loader/>:<> <div className="choosedelivery-accepted-card">
                     <h1 className="choosedelivery-accepted-name">Request</h1>
                     <p className="choosedelivery-accepted-para">{alertdata.bloodgroup} · {alertdata.unitsneeded} units</p>
                  </div>
@@ -113,7 +117,7 @@ const ChooseDelivery =()=>{
 
                  <button type="button" className="choosedelivery-button" onClick={onConfirmrequest}>
                     Confirm & Continue
-                 </button>
+                 </button></>}
 
             </div>
 

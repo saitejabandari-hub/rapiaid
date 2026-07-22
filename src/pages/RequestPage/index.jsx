@@ -6,6 +6,7 @@ import { MdOutlineBloodtype } from "react-icons/md";
 import { MapContainer, TileLayer, Marker, useMapEvents } from 'react-leaflet'
 import 'leaflet/dist/leaflet.css'
 import L from 'leaflet'
+import Loader from '../../components/Loader'
 
 import './index.css'
 
@@ -24,6 +25,7 @@ const RequestPage =()=>{
     const[lon,setLon]=useState('')
     const [description, setDescription] = useState('')
     const navigate = useNavigate()
+    const[loader,setLoader]=useEffect(false)
 
     delete L.Icon.Default.prototype._getIconUrl //This code pasted from AI
     L.Icon.Default.mergeOptions({
@@ -91,6 +93,9 @@ const RequestPage =()=>{
     }, [])
 
     const onSendRequest= async()=>{
+
+        setLoader(true)
+
         const requestdetails = {
             resource,
             bloodGroup: bloodgroup,
@@ -119,6 +124,7 @@ const RequestPage =()=>{
         const data = await response.json()
         if (response.ok) {
             navigate(`/request-livetrack/${data.request._id}`)
+            setLoader(false)
         }
 
 
@@ -167,7 +173,7 @@ return(
        
         <div className='request-page-main-container'>
 
-            <div className="request-page-input-card">
+        {loader ? <Loader/>:<>    <div className="request-page-input-card">
             <label className="request-page-input-label">Describe your emergency (AI-powered)</label>
             <textarea
                 value={description}
@@ -291,7 +297,8 @@ return(
                     <button type="button" className="request-page-button" onClick={onSendRequest}>
                         Send Alert To Nearby Donors
                     </button>
-        </div>
+        </div></>}
+        
         
     </div>
     </div>
