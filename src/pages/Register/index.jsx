@@ -70,7 +70,7 @@ const Register = () =>{
 
             if(response.ok){
                 Cookies.set("jwt_token",data.token,{expires:30})
-                navigate(`/${data.user.role}`)
+                window.location.href = `/${data.user.role}`
             } else {
                 console.log("Registration failed:", data.message)
             }

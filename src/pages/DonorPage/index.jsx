@@ -67,7 +67,7 @@ const DonorPage=()=>{
 
     return(
         <div className='donor-page-container'>
-            <Header/>
+            <Header  subtitles={"Somebody needby you need help"} />
             <div className='donor-page-main-container' >
             {alterts.map((each,index)=>(
                 <div key={index}>

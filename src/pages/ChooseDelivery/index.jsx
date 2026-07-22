@@ -84,7 +84,7 @@ const ChooseDelivery =()=>{
 
     return(
         <div className="choosedelivery-container">
-            <Header/>
+            <Header subtitles={"Somebody needby you need help"}/>
             <div className="choosedelivery-main-card">
                  <div className="choosedelivery-accepted-card">
                     <h1 className="choosedelivery-accepted-name">Request</h1>

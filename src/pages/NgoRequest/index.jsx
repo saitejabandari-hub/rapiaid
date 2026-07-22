@@ -78,7 +78,7 @@ const NgoRequest =()=>{
 
     return(
         <div className="NgoRequest-container">
-            <Header/>
+            <Header  subtitles={"your assigned assiments"} />
             <div className="NgoRequest-main-container">
                 {myassignment && <div className="NgoRequest-details-card">
                     <div className="NgoRequest-category-pickup-card">
