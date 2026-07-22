@@ -22,6 +22,7 @@ const  App = ()=>{
     useEffect(()=>{
 
         const jwt = Cookies.get("jwt_token")
+        console.log(jwt)
 
         const getUser =  async () =>{
 

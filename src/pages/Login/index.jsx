@@ -36,7 +36,7 @@ const Login =()=>{
         }
          if (jwt){
              getUser()
-             console.log("jwt")
+            
          }
         }
     }, [navigate])
@@ -70,7 +70,6 @@ const Login =()=>{
         
         if(response.ok){
              Cookies.set("jwt_token",data.token,{expires:30})
-                console.log(data.message)
                  window.location.href = '/'
                
             } else {

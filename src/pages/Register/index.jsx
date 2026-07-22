@@ -1,6 +1,7 @@
 import { useState,useEffect } from 'react'
 import Cookies from "js-cookie"
 import Headerforentering from '../../components/Headerforentering'
+import Loader from '../../components/Loader'
 import {Link, useNavigate } from 'react-router-dom'
 
 import './index.css'
@@ -15,6 +16,7 @@ const Register = () =>{
     const [lat, setLat] = useState(null)
     const [lon, setLon] = useState(null)
     const navigate = useNavigate()
+    const[loader,setLoader]=useState(false)
 
 
       const categories = [
@@ -40,6 +42,7 @@ const Register = () =>{
         },
     ]
     const onSubmitRegisteration= async (event)=>{
+        setLoader(true)
         event.preventDefault()
 
         const userdatails = {
@@ -70,6 +73,7 @@ const Register = () =>{
 
             if(response.ok){
                 Cookies.set("jwt_token",data.token,{expires:30})
+                setLoader(false)
                 window.location.href = `/${data.user.role}`
             } else {
                 console.log("Registration failed:", data.message)
@@ -101,7 +105,7 @@ const Register = () =>{
         <div className='register-container'>
             <Headerforentering subtitle="Create your account" />
             <form className='register-main-container' onSubmit={onSubmitRegisteration}>
-                <div className='register-input-container'>
+               {loader ? <Loader/> : <> <div className='register-input-container'>
                     <div className='register-input-card'>
                         <label className='register-label'>
                             Name
@@ -168,7 +172,7 @@ const Register = () =>{
                 <button type="submit" className='register-submit-card'  >
                         Create Account
                 </button>
-                <p className='register-alredy-account'>Already have an account ? <Link to="/Login" className='register-alredy-account-login'  >LogIn</Link></p>
+                <p className='register-alredy-account'>Already have an account ? <Link to="/Login" className='register-alredy-account-login'  >LogIn</Link></p></>}
             </form>
         </div>
     )
