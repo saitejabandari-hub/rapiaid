@@ -15,9 +15,9 @@ const NgoRequest =()=>{
     const jwt = Cookies.get("jwt_token")
 
     useEffect(()=>{
-
-        const getmyassignments = async()=>{
             setLoader(true)
+        const getmyassignments = async()=>{
+            
             try{
 
                 const url = "https://rapidaid-back.onrender.com/ngo/my-assignments"

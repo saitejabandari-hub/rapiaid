@@ -2,12 +2,11 @@
 .register-container{
     max-width:400px;
     margin:0px auto;
-    border-radius:16px;
     padding-bottom:15px;
     display:flex;
     flex-direction: column;
     background-color: #ffffff;
-    height:100vh;
+    min-height:100vh;
 }
 
 .register-main-container{

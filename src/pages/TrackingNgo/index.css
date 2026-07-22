@@ -1,6 +1,6 @@
 .trackingpickup-container{
     max-width:400px;
-    height:100vh;
+    min-height:100vh;
     margin: 0px auto;
     border-radius: 16px;
     background-color: #ffffff;

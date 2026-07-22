@@ -2,10 +2,9 @@
  .NgoRequest-container{
     display: flex;
     flex-direction: column;
-    border-radius: 16px;
     max-width:400px;
     margin: 0px auto;
-    height:100vh;
+    min-height:100vh;
     background-color: #ffffff;
  }
 
@@ -15,6 +14,7 @@
     flex-direction: column;
     padding: 15px;
     width:100%;
+    flex:1;
  }
  .NgoRequest-details-card{
     display:flex;

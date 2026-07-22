@@ -68,7 +68,7 @@ const LiveTracking =()=>{
             <div className="livetracking-main-container">
                 {loader?<Loader/>:<>{donor ? <><div className="livetracking-headding-card">
                     <h1 className="livetracking-heading">Donor on the way</h1>
-                    <p className="livetracking-matched-time">Matched in 2 min 40 sec</p>
+                    <p className="livetracking-matched-time"></p>
                 </div>
 
                 <div className="livetracking-donor-container">
