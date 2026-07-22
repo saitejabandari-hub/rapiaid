@@ -20,9 +20,10 @@ const LiveTracking =()=>{
 
     useEffect(()=>{
 
+        setLoader(true)
         
         const getstatus = async()=>{
-            setLoader(true)
+            
             const url= `https://rapidaid-back.onrender.com/req/getstatus/${requestId}`
 
             const options={
@@ -47,6 +48,15 @@ const LiveTracking =()=>{
         }
 
         getstatus()
+
+         const callApi = setInterval(()=>{
+           getstatus()
+            
+        },5000)
+
+        return ()=>{
+            clearInterval(callApi)
+        }
         
 
     },[])

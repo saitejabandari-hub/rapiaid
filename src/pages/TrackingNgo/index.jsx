@@ -13,7 +13,7 @@ const TrackingNgo =()=>{
     <div className="trackingpickup-main-container">
         {loader ? <Loader/> : <><div className="trackingpickup-headding-card">
             <h1 className="trackingpickup-heading">NGO volunteer on the way</h1>
-            <p className="trackingpickup-matched-time">ETA 2 min to collect</p>
+            <p className="trackingpickup-matched-time"></p>
         </div>
 
         <div className="trackingpickup-donor-container">

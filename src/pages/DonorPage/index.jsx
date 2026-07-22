@@ -56,7 +56,7 @@ const DonorPage=()=>{
 
         const callApi = setInterval(()=>{
             getmyalert()
-            console.log("hello")
+            
         },5000)
 
         return ()=>{

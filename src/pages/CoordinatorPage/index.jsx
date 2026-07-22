@@ -35,7 +35,17 @@ const CoordinatorPage =() =>{
         }
 
         getassignments()
-    },[])
+
+        const callApi = setInterval(()=>{
+            getassignments()
+            
+        },5000)
+
+        return ()=>{
+            clearInterval(callApi)
+        }
+
+    },[jwt])
 
     
 

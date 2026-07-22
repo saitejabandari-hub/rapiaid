@@ -48,6 +48,16 @@ const NgoRequest =()=>{
 
         getmyassignments()
 
+         const callApi = setInterval(()=>{
+           getmyassignments()
+            
+        },5000)
+
+        return ()=>{
+            clearInterval(callApi)
+        }
+        
+
     },[])
 
     const onClickPicked = async (value) =>{
@@ -71,7 +81,6 @@ const NgoRequest =()=>{
             if(response.ok){
                 setDeliverstatus(value)
                 setMyassignment({ ...myassignment, status: value })
-                console.log(data.message)
             }
 
        }catch(error){

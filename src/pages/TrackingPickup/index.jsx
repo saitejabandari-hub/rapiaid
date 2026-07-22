@@ -20,9 +20,10 @@ const TrackingPickup =()=>{
     
 
     useEffect(() => {
+         setLoader(true)
         const getStatus = async () => {
 
-            setLoader(true)
+           
           
             const url = `https://rapidaid-back.onrender.com/match/status/${matchId}`
             const options = {
@@ -46,7 +47,18 @@ const TrackingPickup =()=>{
             }
         }
 
-        getStatus()
+         getStatus()
+
+         const callApi = setInterval(()=>{
+           getStatus()
+            
+        },5000)
+
+        return ()=>{
+            clearInterval(callApi)
+        }
+
+
     }, [])
 
 
