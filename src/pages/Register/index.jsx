@@ -80,6 +80,7 @@ const Register = () =>{
             }
 
       }catch(error){
+         setLoader(false);
         console.log("something went wrong", error.message)
       }
             

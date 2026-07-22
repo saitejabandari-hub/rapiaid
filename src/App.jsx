@@ -18,11 +18,11 @@ import PublicRoute from './components/PublicRoute'
 
 const  App = ()=>{
     const [user,setUser]=useState(null)
+
+    const jwt = Cookies.get("jwt_token")
+        console.log(jwt)
     
     useEffect(()=>{
-
-        const jwt = Cookies.get("jwt_token")
-        console.log(jwt)
 
         const getUser =  async () =>{
 
@@ -56,7 +56,7 @@ const  App = ()=>{
          }
 
 
-    },[])
+    },[jwt])
 
 
   
@@ -169,13 +169,6 @@ const  App = ()=>{
             </BrowserRouter>
 )
 
-        
-    
-
-    
-   
-        
-    
 
 }
 
